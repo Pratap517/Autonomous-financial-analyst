@@ -12,8 +12,9 @@ import streamlit as st
 # load_dotenv(find_dotenv())
 # SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
 # SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
-OPENAI_API_KEY = "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"
+#OPENAI_API_KEY = "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"
 SERPAPI_API_KEY = "50630e438aacdabfba9b63ad7b6d3bf6d86a0331"
+openai.api_key="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"
 
 
 def search_financials(company_name):
@@ -36,7 +37,7 @@ def search_financials(company_name):
 def summarise_financial_statements(response_data, company, balance_sheet_last_year):
     response_str = json.dumps(response_data)
 
-    llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.7,openai_api_key=OPENAI_API_KEY)
+    llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
     template = """
     You are a world class financial analyst. Here is the financial data for {company}:
     
