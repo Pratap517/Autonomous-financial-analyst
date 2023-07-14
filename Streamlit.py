@@ -84,7 +84,7 @@ def main():
 
     st.set_page_config(page_title="Autonomous financial analyst", page_icon=":dollar:")
     st.header("Autonomous financial analyst :dollar:")
-    openaiapi = st.text_input("OpenAI API Key",type='password)
+    openaiapi = st.text_input("OpenAI API Key",type='password')
     company = st.text_input("Company to analyse")
 
     if not openaiapi:
