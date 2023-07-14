@@ -37,7 +37,7 @@ def search_financials(company_name):
 def summarise_financial_statements(response_data, company, balance_sheet_last_year):
     response_str = json.dumps(response_data)
     try:
-        llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+        llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
     except Exception as e:
         print(f"Error with OpenAI model instantiation: {str(e)}")
 
