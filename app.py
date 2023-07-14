@@ -8,6 +8,7 @@ import requests
 import json
 import streamlit as st
 from langchain.utilities import GoogleSerperAPIWrapper
+from langchain.chat_models import ChatOpenAI
 
 SERPAPI_API_KEY = "e19030b0bcc80f528c588cb7c7d15d441d091598"
 OPENAI_API_KEY = "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"
@@ -27,7 +28,7 @@ def search_financials(company_name):
 def summarise_financial_statements(response_data, company, balance_sheet_last_year):
     response_str = json.dumps(response_data)
 
-    llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+    llm = llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
     template = """
     You are a world class financial analyst. Here is the financial data for {company}:
     
