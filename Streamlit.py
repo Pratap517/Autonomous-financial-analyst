@@ -72,7 +72,7 @@ def summarise_financial_statements(response_data, company, balance_sheet_last_ye
         template=template,
     )
 
-    summary_chain = LLMChain(llm=llm, prompt=prompt_template, verbose=False)
+    summary_chain = LLMChain(llm=llm, prompt=prompt_template, verbose=True)
 
     summary = summary_chain.predict(
         response_str=response_str,
