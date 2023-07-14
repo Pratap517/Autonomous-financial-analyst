@@ -36,7 +36,7 @@ def search_financials(company_name):
 def summarise_financial_statements(response_data, company, balance_sheet_last_year):
     response_str = json.dumps(response_data)
 
-    llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+    llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.7,openai_api_key=OPENAI_API_KEY)
     template = """
     You are a world class financial analyst. Here is the financial data for {company}:
     
@@ -84,7 +84,7 @@ def main():
 
     st.set_page_config(page_title="Autonomous financial analyst", page_icon=":dollar:")
     st.header("Autonomous financial analyst :dollar:")
-    openaiapi = st.text_input("OpenAI API Key")
+    openaiapi = st.text_input("OpenAI API Key",type='password)
     company = st.text_input("Company to analyse")
 
     if not openaiapi:
