@@ -21,7 +21,7 @@ def search_financials(company_name):
     url = "https://google.serper.dev/search"
     query = f"{company_name} latest financial balance sheet"
     payload = json.dumps({"q": query})
-    headers = {"X-API-KEY": st.secrets["SERPAPI_API_KEY"], "Content-Type": "application/json"}
+    headers = {"X-API-KEY": "ca090a211b655fb5626c1931c7ed26289d0e50cc", "Content-Type": "application/json"}
 
     try:
         response = requests.request("POST", url, headers=headers, data=payload)
