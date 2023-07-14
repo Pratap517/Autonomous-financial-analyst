@@ -67,7 +67,7 @@ def summarise_financial_statements(response_data, company, balance_sheet_last_ye
         template=template,
     )
 
-    summary_chain = LLMChain(llm=llm, prompt=prompt_template, verbose=True)
+    summary_chain = LLMChain(llm=llm, prompt=prompt_template, verbose=False)
 
     summary = summary_chain.predict(
         response_str=response_str,
@@ -114,6 +114,9 @@ def main():
             st.info(financial_data)
         with st.expander("Summary"):
             st.info(summary)
+    else:
+        st.info("No financial_data Found")
+        
 
 
 if __name__ == "__main__":
