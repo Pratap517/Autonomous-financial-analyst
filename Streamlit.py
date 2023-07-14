@@ -34,7 +34,7 @@ def search_financials(company_name):
     return response_data
 
 
-def summarise_financial_statements(response_data, company, balance_sheet_last_year):
+def summarise_financial_statements(response_str, company, balance_sheet_last_year):
     response_str = json.dumps(response_data)
     try:
         llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
