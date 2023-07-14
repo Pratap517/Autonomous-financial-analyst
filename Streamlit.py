@@ -9,9 +9,11 @@ import json
 import streamlit as st
 
 
-load_dotenv(find_dotenv())
-SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# load_dotenv(find_dotenv())
+# SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
+# SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
+OPENAI_API_KEY = "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"
+SERPAPI_API_KEY = "50630e438aacdabfba9b63ad7b6d3bf6d86a0331"
 
 
 def search_financials(company_name):
