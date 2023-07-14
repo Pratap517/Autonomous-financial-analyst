@@ -7,21 +7,26 @@ from dotenv import find_dotenv, load_dotenv
 import requests
 import json
 import streamlit as st
+from langchain.chat_models import ChatOpenAI
+
+# Initialize the chat model
+# llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
 
 
-# load_dotenv(find_dotenv())
-#SERPAPI_API_KEY = st.secrets["SERPAPI_API_KEY"]
-# # SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
-# #OPENAI_API_KEY = "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"
-# SERPAPI_API_KEY = "50630e438aacdabfba9b63ad7b6d3bf6d86a0331"
-# openai.api_key="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"
+load_dotenv(find_dotenv())
+#SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
+SERPAPI_API_KEY = "50630e438aacdabfba9b63ad7b6d3bf6d86a0331"
+#OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 
 def search_financials(company_name):
     url = "https://google.serper.dev/search"
     query = f"{company_name} latest financial balance sheet"
     payload = json.dumps({"q": query})
-    headers = {"X-API-KEY": "ca090a211b655fb5626c1931c7ed26289d0e50cc", "Content-Type": "application/json"}
+    headers = {
+        "X-API-KEY": "ca090a211b655fb5626c1931c7ed26289d0e50cc",
+        "Content-Type": "application/json",
+    }
 
     try:
         response = requests.request("POST", url, headers=headers, data=payload)
@@ -38,8 +43,10 @@ def summarise_financial_statements(response_data, company, balance_sheet_last_ye
     response_str = json.dumps(response_data)
     try:
         llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+
     except Exception as e:
         print(f"Error with OpenAI model instantiation: {str(e)}")
+
     template = """
     You are a world class financial analyst. Here is the financial data for {company}:
     
@@ -87,7 +94,7 @@ def main():
 
     st.set_page_config(page_title="Autonomous financial analyst", page_icon=":dollar:")
     st.header("Autonomous financial analyst :dollar:")
-    openaiapi = st.text_input("OpenAI API Key",type='password')
+    openaiapi = st.text_input("OpenAI API Key", type="password")
     company = st.text_input("Company to analyse")
 
     if not openaiapi:
@@ -114,7 +121,6 @@ def main():
             st.info(summary)
     else:
         st.info("No financial_data Found")
-        
 
 
 if __name__ == "__main__":
