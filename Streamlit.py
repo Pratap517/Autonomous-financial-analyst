@@ -10,7 +10,7 @@ import streamlit as st
 
 
 # load_dotenv(find_dotenv())
-SERPAPI_API_KEY = st.secrets["SERPAPI_API_KEY"]
+#SERPAPI_API_KEY = st.secrets["SERPAPI_API_KEY"]
 # # SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
 # #OPENAI_API_KEY = "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"
 # SERPAPI_API_KEY = "50630e438aacdabfba9b63ad7b6d3bf6d86a0331"
@@ -21,7 +21,7 @@ def search_financials(company_name):
     url = "https://google.serper.dev/search"
     query = f"{company_name} latest financial balance sheet"
     payload = json.dumps({"q": query})
-    headers = {"X-API-KEY": SERPAPI_API_KEY, "Content-Type": "application/json"}
+    headers = {"X-API-KEY": st.secrets["SERPAPI_API_KEY"], "Content-Type": "application/json"}
 
     try:
         response = requests.request("POST", url, headers=headers, data=payload)
