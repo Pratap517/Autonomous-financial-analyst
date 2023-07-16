@@ -40,7 +40,7 @@ if prompt := st.chat_input(placeholder="Type something..."):
         st.stop()
 
     llm = ChatOpenAI(
-        temperature=0, streaming=True, openai_api_key=os.getenv("OPENAI_API_KEY")
+        temperature=0, streaming=True, openai_api_key=openai_api_key
     )
     # tools = load_tools(["ddg-search"])
     searchagent = initialize_agent(
