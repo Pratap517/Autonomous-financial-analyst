@@ -2,6 +2,7 @@ pdf2image
 tabulate
 unstructured
 streamlit
+duckduckgo-search
 langchain
 openai
 requests
